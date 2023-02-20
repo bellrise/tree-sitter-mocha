@@ -3,8 +3,6 @@
 "type" @keyword
 "ret" @keyword
 
-"@" @operator
-
 "." @punctuation.delimiter
 "," @punctuation.delimiter
 ":" @punctuation.delimiter
@@ -15,11 +13,11 @@
 "}" @punctuation.delimiter
 "->" @punctuation.delimiter
 
-(string) @string
+(symbol) @variable
+(symbol_func) @function
+(symbol_type) @type
+
 (comment) @comment
-(funcname) @function
-(modname) @variable
-(varname) @variable
-(addr) @variable
+(string) @string
 (number) @number
 (type) @type
