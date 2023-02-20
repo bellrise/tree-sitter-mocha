@@ -5,6 +5,7 @@
 
 "." @punctuation.delimiter
 "," @punctuation.delimiter
+"?" @punctuation.delimiter
 ":" @punctuation.delimiter
 "=" @punctuation.delimiter
 "(" @punctuation.delimiter
@@ -12,6 +13,8 @@
 "{" @punctuation.delimiter
 "}" @punctuation.delimiter
 "->" @punctuation.delimiter
+"==" @punctuation.delimiter
+"!=" @punctuation.delimiter
 
 (symbol) @variable
 (symbol_func) @function

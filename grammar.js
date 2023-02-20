@@ -44,9 +44,7 @@ module.exports = grammar({
 			optional(seq(
 				'->', $.type
 			)),
-			'{',
-			repeat($.statement),
-			'}'
+			$.block
 		),
 
 		function_params: $ => seq(
@@ -111,6 +109,7 @@ module.exports = grammar({
 			$.var_decl,
 			$.var_assign,
 			$.builtin_call,
+			$.condition,
 			$.call,
 			$.ret
 		),
@@ -143,6 +142,23 @@ module.exports = grammar({
 
 		ret: $ => seq(
 			'ret', $.rvalue
+		),
+
+		condition: $ => seq(
+			'(', choice($.comparison, $.rvalue), ')',
+			'?', choice($.block, $.rvalue),
+			optional(seq(
+				':', choice($.block, $.rvalue)
+			)),
+		),
+
+		comparison: $ => choice(
+			seq($.rvalue, '==', $.rvalue),
+			seq($.rvalue, '!=', $.rvalue),
+		),
+
+		block: $ => seq(
+			'{', repeat($.statement), '}'
 		),
 
 		rvalue: $ => prec(1, choice(
@@ -185,7 +201,13 @@ module.exports = grammar({
 
 		literal: $ => choice(
 			$.string,
-			$.number
+			$.number,
+			$.boolean
+		),
+
+		boolean: $ => choice(
+			'true',
+			'false'
 		),
 
 		symbol: $ => /[A-z_]\w*/,
