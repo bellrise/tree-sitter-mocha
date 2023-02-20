@@ -86,8 +86,8 @@ module.exports = grammar({
 			$.type
 		),
 
-		builtin_call: $ => seq(
-			$.symbol_func,
+		builtin_call: $ => prec(2, seq(
+			$.symbol_builtin,
 			'(',
 			optional(seq(
 				choice($.rvalue, $.type),
@@ -97,7 +97,7 @@ module.exports = grammar({
 				)),
 			)),
 			')'
-		),
+		)),
 
 		type: $ => seq(
 			optional('&'),
@@ -110,6 +110,7 @@ module.exports = grammar({
 		statement: $ => choice(
 			$.var_decl,
 			$.var_assign,
+			$.builtin_call,
 			$.call,
 			$.ret
 		),
@@ -127,7 +128,7 @@ module.exports = grammar({
 			$.lvalue, '=', $.rvalue
 		),
 
-		call: $ => seq(
+		call: $ => prec(1, seq(
 			$.symbol_func,
 			'(',
 			optional(seq(
@@ -138,7 +139,7 @@ module.exports = grammar({
 				))
 			)),
 			')'
-		),
+		)),
 
 		ret: $ => seq(
 			'ret', $.rvalue
@@ -187,14 +188,16 @@ module.exports = grammar({
 			$.number
 		),
 
-		symbol: $ => /[A-z_][\w\d]*/,
+		symbol: $ => /[A-z_]\w*/,
 		string: $ => /('[^']*'|"[^"]*")/,
 		number: $ => /\d+(\.\d+)?/,
 
 		// Custom fields
 
-		symbol_func: $ => prec(2, /[A-z_][\w\d]*/),
+		symbol_func: $ => prec(2, /[A-z_]\w*/),
+		symbol_builtin: $ => prec(2, /__builtin[A-z_]\w*/),
 		symbol_type: $ => prec(2, /[A-z_][\w\d]*/),
+
 		comment: $ => choice(
 			seq('//', /(\\(.|\r?\n)|[^\\\n])*/),
 			seq(

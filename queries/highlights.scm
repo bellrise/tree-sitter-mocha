@@ -15,6 +15,7 @@
 
 (symbol) @variable
 (symbol_func) @function
+(symbol_builtin) @function
 (symbol_type) @type
 
 (comment) @comment
