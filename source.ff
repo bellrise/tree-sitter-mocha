@@ -1,0 +1,28 @@
+use std.io
+
+fn something() -> i32 {
+	ret 0
+}
+
+type Container {
+	is_ok: bool
+	len: i32
+}
+
+fn drop(t: &Container) {}
+
+fn main() {
+	x = 1
+	outer = 33
+	thing = "str"
+
+	t: Container
+	t.is_ok = false
+	t.len = 0
+
+	(t.len == 0) ? {
+		print('container is ok')
+	} : {
+		print('container is not ok')
+	}
+}

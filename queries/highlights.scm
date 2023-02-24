@@ -21,6 +21,7 @@
 (symbol_builtin) @function
 (symbol_type) @type
 
+(boolean) @constant
 (comment) @comment
 (string) @string
 (number) @number

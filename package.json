@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-coffee",
+  "name": "tree-sitter-mocha",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mocha language highlighter",
   "main": "bindings/node",
   "keywords": [
     "parser",
@@ -9,9 +9,10 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tree-sitter generate && node-gyp build"
+    "build": "tree-sitter generate && node-gyp build",
+    "install": "node-gyp rebuild"
   },
-  "author": "fenze",
+  "author": "mini-rose",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.17.0"
@@ -22,7 +23,19 @@
   "tree-sitter": {
     "scope": "source.ff",
     "file-types": [
-	"ff"
+      "ff"
     ]
-  }
+  },
+  "gypfile": true,
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mini-rose/tree-sitter-mocha.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mini-rose/tree-sitter-mocha/issues"
+  },
+  "homepage": "https://github.com/mini-rose/tree-sitter-mocha#readme"
 }

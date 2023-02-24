@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "tree_sitter_coffee_binding",
+      "target_name": "tree_sitter_mocha_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "src"

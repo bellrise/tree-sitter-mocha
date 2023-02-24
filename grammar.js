@@ -1,8 +1,8 @@
-/* Based on the grammar.rst doc from Coffee.
+/* Based on the grammar.rst doc from Mocha.
    Copyright (c) 2023 mini-rose */
 
 module.exports = grammar({
-	name: 'coffee',
+	name: 'mocha',
 
 	extras: $ => [
 		/\s/,

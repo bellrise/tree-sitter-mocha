@@ -1,4 +1,4 @@
-DEST = ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter/queries/coffee
+DEST = ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter/queries/mocha
 
 install:
 	mkdir -p ${DEST}
