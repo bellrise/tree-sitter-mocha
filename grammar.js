@@ -74,7 +74,16 @@ module.exports = grammar({
 		type_field: $ => seq(
 			$.symbol,
 			':',
-			$.type
+			choice($.type, $.type_method)
+		),
+
+		type_method: $ => seq(
+			'fn',
+			optional($.function_params),
+			optional(seq(
+				'->', $.type
+			)),
+			$.block
 		),
 
 		type_alias: $ => seq(
@@ -111,6 +120,7 @@ module.exports = grammar({
 			$.builtin_call,
 			$.condition,
 			$.call,
+			$.member_call,
 			$.ret
 		),
 
@@ -155,6 +165,10 @@ module.exports = grammar({
 		comparison: $ => choice(
 			seq($.rvalue, '==', $.rvalue),
 			seq($.rvalue, '!=', $.rvalue),
+		),
+
+		member_call: $ => seq(
+			$.symbol, '.', $.call
 		),
 
 		block: $ => seq(

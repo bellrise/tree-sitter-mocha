@@ -246,6 +246,25 @@
     }
   },
   {
+    "type": "member_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "member_deref",
     "named": true,
     "fields": {},
@@ -400,6 +419,10 @@
           "named": true
         },
         {
+          "type": "member_call",
+          "named": true
+        },
+        {
           "type": "ret",
           "named": true
         },
@@ -501,6 +524,33 @@
       "types": [
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        },
+        {
+          "type": "type_method",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_method",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_params",
           "named": true
         },
         {
