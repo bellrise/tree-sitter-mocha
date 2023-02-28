@@ -110,9 +110,7 @@ module.exports = grammar({
 		type: $ => seq(
 			optional('&'),
 			$.symbol_type,
-			optional(seq(
-				'[', $.number, ']',
-			)),
+			optional(seq('[', ']'))
 		),
 
 		statement: $ => choice(
@@ -156,16 +154,11 @@ module.exports = grammar({
 		),
 
 		condition: $ => seq(
-			'(', choice($.comparison, $.rvalue), ')',
+			'(', $.rvalue, ')',
 			'?', choice($.block, $.rvalue),
 			optional(seq(
 				':', choice($.block, $.rvalue)
 			)),
-		),
-
-		comparison: $ => choice(
-			seq($.rvalue, '==', $.rvalue),
-			seq($.rvalue, '!=', $.rvalue),
 		),
 
 		member_call: $ => seq(
@@ -177,6 +170,9 @@ module.exports = grammar({
 		),
 
 		rvalue: $ => prec(1, choice(
+			seq(
+				'(', $.rvalue, ')'
+			),
 			$.literal,
 			$.symbol,
 			$.deref,
@@ -184,7 +180,11 @@ module.exports = grammar({
 			$.member,
 			$.member_deref,
 			$.member_pointer_to,
-			$.call
+			$.call,
+			prec.left(2, seq(
+				$.rvalue, $.op, $.rvalue
+			)),
+			$.tuple
 		)),
 
 		lvalue: $ => prec(1, choice(
@@ -200,6 +200,12 @@ module.exports = grammar({
 
 		pointer_to: $ => seq(
 			'&', $.lvalue
+		),
+
+		tuple: $ => seq(
+			'[',
+			$.rvalue,
+			']'
 		),
 
 		member: $ => seq(
@@ -228,6 +234,10 @@ module.exports = grammar({
 		symbol: $ => /[A-z_]\w*/,
 		string: $ => /('[^']*'|"[^"]*")/,
 		number: $ => /\d+(\.\d+)?/,
+
+		op: $ => choice(
+			'+', '-', '*', '/', '==', '!='
+		),
 
 		// Custom fields
 

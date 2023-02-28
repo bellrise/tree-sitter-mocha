@@ -1,25 +1,5 @@
-use "user"
-
-type Container {
-	name: str
-
-	print_num: fn (self: &Container, num: i32) {
-		print(num)
-	}
-
-	print: fn (self: &Container) {
-		print(&self.name)
-	}
-}
-
-fn take_ptr(thing: &Container) {
-	thing.print()
-}
+use std.io
 
 fn main {
-	u.print()
-	u.print_num(5)
-	take_ptr(&u)
-
-	i: i32 = 12
+	tab: i32[] = [ 3, 4, 2 ]
 }
