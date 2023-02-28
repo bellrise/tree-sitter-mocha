@@ -72,12 +72,13 @@ module.exports = grammar({
 		),
 
 		type_field: $ => seq(
-			$.symbol,
+			$.symbol_field,
 			':',
 			choice($.type, $.type_method)
 		),
 
 		type_method: $ => seq(
+			optional('static'),
 			'fn',
 			optional($.function_params),
 			optional(seq(
@@ -233,6 +234,7 @@ module.exports = grammar({
 		symbol_func: $ => prec(2, /[A-z_]\w*/),
 		symbol_builtin: $ => prec(2, /__builtin[A-z_]\w*/),
 		symbol_type: $ => prec(2, /[A-z_][\w\d]*/),
+		symbol_field: $ => prec(2, /[A-z_][\w\d]*/),
 
 		comment: $ => choice(
 			seq('//', /(\\(.|\r?\n)|[^\\\n])*/),

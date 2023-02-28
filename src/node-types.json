@@ -448,6 +448,11 @@
     "fields": {}
   },
   {
+    "type": "symbol_field",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "symbol_func",
     "named": true,
     "fields": {}
@@ -523,7 +528,7 @@
       "required": true,
       "types": [
         {
-          "type": "symbol",
+          "type": "symbol_field",
           "named": true
         },
         {
@@ -737,6 +742,10 @@
   },
   {
     "type": "ret",
+    "named": false
+  },
+  {
+    "type": "static",
     "named": false
   },
   {

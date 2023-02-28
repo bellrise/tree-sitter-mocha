@@ -260,7 +260,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "symbol"
+          "name": "symbol_field"
         },
         {
           "type": "STRING",
@@ -284,6 +284,18 @@
     "type_method": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "static"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "STRING",
           "value": "fn"
@@ -964,6 +976,14 @@
       }
     },
     "symbol_type": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "PATTERN",
+        "value": "[A-z_][\\w\\d]*"
+      }
+    },
+    "symbol_field": {
       "type": "PREC",
       "value": 2,
       "content": {
