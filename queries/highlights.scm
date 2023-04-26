@@ -22,7 +22,7 @@
 
 (symbol) @variable
 (symbol_func) @function
-(symbol_builtin) @function
+(symbol_attr) @attribute
 (symbol_type) @type
 (symbol_field) @field
 

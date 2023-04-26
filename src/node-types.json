@@ -1,5 +1,20 @@
 [
   {
+    "type": "attr_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "symbol_attr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -18,29 +33,6 @@
     "type": "boolean",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "builtin_call",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "rvalue",
-          "named": true
-        },
-        {
-          "type": "symbol_builtin",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "call",
@@ -67,21 +59,6 @@
     "fields": {}
   },
   {
-    "type": "comparison",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "rvalue",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "condition",
     "named": true,
     "fields": {},
@@ -91,10 +68,6 @@
       "types": [
         {
           "type": "block",
-          "named": true
-        },
-        {
-          "type": "comparison",
           "named": true
         },
         {
@@ -127,6 +100,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "attr_list",
+          "named": true
+        },
         {
           "type": "block",
           "named": true
@@ -303,10 +280,6 @@
       "required": false,
       "types": [
         {
-          "type": "builtin_call",
-          "named": true
-        },
-        {
           "type": "function_decl",
           "named": true
         },
@@ -324,6 +297,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "op",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "pointer_to",
@@ -360,7 +338,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -388,11 +366,23 @@
           "named": true
         },
         {
+          "type": "op",
+          "named": true
+        },
+        {
           "type": "pointer_to",
           "named": true
         },
         {
+          "type": "rvalue",
+          "named": true
+        },
+        {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -406,10 +396,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "builtin_call",
-          "named": true
-        },
         {
           "type": "call",
           "named": true
@@ -443,7 +429,7 @@
     "fields": {}
   },
   {
-    "type": "symbol_builtin",
+    "type": "symbol_attr",
     "named": true,
     "fields": {}
   },
@@ -463,17 +449,28 @@
     "fields": {}
   },
   {
+    "type": "tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "rvalue",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "type",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "number",
-          "named": true
-        },
         {
           "type": "symbol_type",
           "named": true
@@ -681,7 +678,15 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {

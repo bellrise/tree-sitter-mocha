@@ -1,5 +1,7 @@
-use std.io
 
-fn main {
-	tab: i32[] = [ 3, 4, 2 ]
+fn print(num: i32) -> null (extern, notmangled) {}
+
+fn main() {
+	x: i32 = 123
+	print(123)
 }
